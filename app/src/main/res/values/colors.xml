@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@android:color/white</color>
+    <color name="colorPrimaryDark">#1F87F1</color>
+    <color name="colorAccent">#0071E4</color>
+    <color name="cor_fundo_drawer">#F7F7F7</color>
+</resources>

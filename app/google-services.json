@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "81612517003",
+    "firebase_url": "https://app-igreja-70f09.firebaseio.com",
+    "project_id": "app-igreja-70f09",
+    "storage_bucket": "app-igreja-70f09.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81612517003:android:5b9ed1b7b907d7a20cee8e",
+        "android_client_info": {
+          "package_name": "com.curso.app.appsantamededeus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81612517003-ccittpgcv2imdnrcu76f7pgku21o8kmg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.curso.app.appsantamededeus",
+            "certificate_hash": "2fab93e8c74a120da5d155cca40b54b06b3b5268"
+          }
+        },
+        {
+          "client_id": "81612517003-v99gmb8tmd9mpg52vd2qog9m3akcefne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDD4bkOmazKZHDB5mstuC9XLp1thzDDN9U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81612517003-v99gmb8tmd9mpg52vd2qog9m3akcefne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

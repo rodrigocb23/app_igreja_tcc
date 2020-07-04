@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.curso.app.appsantamededeus.ui.home.HomeFragment"
+        android:label="@string/paroquia_santa"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_calendario"
+        android:name="com.curso.app.appsantamededeus.ui.calendario.CalendarioFragment"
+        android:label="@string/menu_calendar"
+        tools:layout="@layout/fragment_calendario" />
+
+    <fragment
+        android:id="@+id/nav_musicas"
+        android:name="com.curso.app.appsantamededeus.ui.musicas.MusicasFragment"
+        android:label="@string/menu_musicas"
+        tools:layout="@layout/fragment_musicas" />
+
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.curso.app.appsantamededeus.ui.perfil.PerfilFragment"
+        android:label="@string/menu_perfil"
+        tools:layout="@layout/fragment_perfil" />
+
+    <fragment
+        android:id="@+id/nav_agenda"
+        android:name="com.curso.app.appsantamededeus.ui.agenda.AgendaFragment"
+        android:label="@string/menu_agenda"
+        tools:layout="@layout/fragment_agenda" />
+
+    <fragment
+        android:id="@+id/nav_mapa"
+        android:name="com.curso.app.appsantamededeus.ui.mapa.MapaFragment"
+        android:label="@string/menu_mapa"
+        tools:layout="@layout/fragment_mapa" />
+
+
+</navigation>

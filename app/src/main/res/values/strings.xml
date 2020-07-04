@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">App Santa Mãe de Deus</string>
+    <string name="digite_email">Digite seu e-mail</string>
+    <string name="digite_senha">Digite sua senha</string>
+    <string name="botao_logar">Logar</string>
+    <string name="nao_tem_conta">Não tem conta? Cadastre-se</string>
+    <string name="digite_nome">Digite seu nome</string>
+    <string name="botao_cadastrar">Cadastrar</string>
+    <string name="title_activity_menu_igreja">MenuIgreja</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Início</string>
+    <string name="menu_calendar">Calendário</string>
+    <string name="menu_agenda">Agenda</string>
+    <string name="menu_musicas">Músicas</string>
+    <string name="menu_perfil">Perfil</string>
+    <string name="menu_mapa">Como Chegar</string>
+    <string name="menu_sair">Sair</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="paroquia_santa">Paróquia Santa Mãe de Deus</string>
+    <string name="title_activity_localizaca">Map</string>
+</resources>
