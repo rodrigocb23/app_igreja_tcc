@@ -33,26 +33,10 @@ public class LocalizacaActivity extends FragmentActivity implements OnMapReadyCa
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-
         MarkerOptions santa = new MarkerOptions()
                 .position(new LatLng(-16.007047,-47.996701 ))
                 .title("Santa");
 
-       // LatLng santa = new LatLng( -16.007047,  -47.996701);
-        //-16.007047, -47.996701
-
-       /* mMap.addMarker(
-                new MarkerOptions()
-                        .position(santa)
-                .title("Igraja Santa Mãe de Deus")
-
-
-        ).showInfoWindow();*/
-
         mMap.addMarker(santa);
-
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(santa));
     }
 }

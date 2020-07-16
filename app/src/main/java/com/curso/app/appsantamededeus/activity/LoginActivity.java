@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import com.curso.app.appsantamededeus.config.ConfiguracaoFirebase;
 import com.curso.app.appsantamededeus.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputEditText campoEmail;
     private TextInputEditText campoSenha;
     private FirebaseAuth auth;
+    private NavigationView sair;
 
 
     @Override
@@ -39,6 +42,8 @@ public class LoginActivity extends AppCompatActivity {
 
         campoEmail = findViewById(R.id.editLoginEmail);
         campoSenha = findViewById(R.id.editLoginSenha);
+
+        sair = (NavigationView) findViewById(R.id.nav_sair);
     }
 
 
@@ -123,6 +128,5 @@ public class LoginActivity extends AppCompatActivity {
       startActivity(intent);
 
     }
-
 
 }

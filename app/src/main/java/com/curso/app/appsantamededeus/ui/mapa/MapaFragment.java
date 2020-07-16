@@ -65,24 +65,11 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
                 .position(new LatLng( -16.007047,  -47.996701))
                 .title("Santa").snippet(" Santa Maria"));
 
-        // Add a marker in Sydney and move the camera
-
-
-        // LatLng santa = new LatLng( -16.007047,  -47.996701);
-        //-16.007047, -47.996701
-
-       // mMap.addMarker(
-             //   new MarkerOptions()
-               //         .position(santa)
-              //  .title("Igraja Santa Mãe de Deus")
-       // ).showInfoWindow();
-
-
-        CameraPosition santa = CameraPosition.builder()
-                .target(new LatLng( -16.007047,  -47.996701)).zoom(16)
+        CameraPosition igreja = CameraPosition.builder()
+                .target(new LatLng( -16.007047,  -47.996701)).zoom(15)
                 .bearing(0).tilt(45).build();
 
-        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(santa));
-       // mMap.moveCamera(CameraUpdateFactory.newLatLng(santa));
+        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(igreja));
+
     }
 }
