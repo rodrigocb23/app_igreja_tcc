@@ -1,4 +1,4 @@
-package com.curso.app.appsantamededeus.ui.agenda;
+package com.curso.app.appsantamededeus.ui.sair;
 
 
 import android.os.Bundle;
@@ -14,20 +14,19 @@ import com.curso.app.appsantamededeus.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AgendaFragment extends Fragment {
+public class SairFragment extends Fragment {
 
 
-    public AgendaFragment() {
+    public SairFragment() {
         // Required empty public constructor
     }
-
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_agenda, container, false);
+        return inflater.inflate(R.layout.fragment_sair, container, false);
     }
 
 }
