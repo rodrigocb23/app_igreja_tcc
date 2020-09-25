@@ -2,12 +2,13 @@ package com.curso.app.appsantamededeus.model;
 
 public class Evento {
 
-    private Long id;
+    private String id;
     private String usuario;
     private String dataSalva;
     private String horaInicio;
     private String horaFim;
     private String decricao;
+    private String local;
 
     public Evento(){
     }
@@ -21,11 +22,19 @@ public class Evento {
         return usuario;
     }
 
-    public Long getId() {
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -59,5 +68,10 @@ public class Evento {
 
     public void setDecricao(String decricao) {
         this.decricao = decricao;
+    }
+
+
+    public void remover(){
+
     }
 }

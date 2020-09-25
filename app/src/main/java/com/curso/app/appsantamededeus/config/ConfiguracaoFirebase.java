@@ -1,6 +1,7 @@
 package com.curso.app.appsantamededeus.config;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -11,11 +12,15 @@ public class ConfiguracaoFirebase {
 
     //Retornar a instância do FirebaseDatabase
     public static DatabaseReference getDatabase(){
-        if( database == null){
+        if( database == null) {
             database = FirebaseDatabase.getInstance().getReference();
         }
-
         return database;
+    }
+
+    public static FirebaseUser getUsuarioAtual(){
+        FirebaseAuth usuairoAtual = getAuth();
+        return usuairoAtual.getCurrentUser();
     }
 
     //Retornar a instância do FirebaseAuth
@@ -24,6 +29,12 @@ public class ConfiguracaoFirebase {
             auth = FirebaseAuth.getInstance();
         }
         return  auth;
+    }
+    public static String getIdUsuario(){
+
+        FirebaseAuth autenticacao = getAuth();
+        return autenticacao.getCurrentUser().getUid();
+
     }
 
 

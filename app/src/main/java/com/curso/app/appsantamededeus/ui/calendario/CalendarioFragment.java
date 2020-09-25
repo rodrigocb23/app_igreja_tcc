@@ -15,10 +15,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.curso.app.appsantamededeus.R;
 import com.curso.app.appsantamededeus.activity.MainActivity;
 import com.curso.app.appsantamededeus.model.Evento;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,28 +52,27 @@ public class CalendarioFragment extends Fragment {
                 String date = dayOfMonth + "/"+ (month+1) + "/"+ year;
                 Log.d(TAG, "Data selecionada: data: "+date);
 
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                intent.putExtra("date", date);
-                startActivity(intent);
+                SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                   Date data = sdf1.parse(date);
+                    final Date dateHoje = new Date();
+                    if(!data.before(dateHoje)||data==dateHoje){
+
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        intent.putExtra("date", date);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(getActivity(),
+                                "Data Inválida!",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
        return view;
     }
-
-   /* @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        agendar = (Button) view.findViewById(R.id.salvarData);
-
-        agendar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
-
-
-            }
-        });
-
-    }*/
 
 }

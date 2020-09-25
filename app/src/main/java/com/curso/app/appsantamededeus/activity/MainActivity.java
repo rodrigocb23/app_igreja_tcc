@@ -21,11 +21,10 @@ import com.curso.app.appsantamededeus.model.Evento;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner sp_hora_final;
     private Button btnBanner;
     private Button btnSalvar;
-    private EditText txt_descricao;
+    private EditText txtDescricao;
     private AlertDialog alerta;
     public static final int IMAGEM_INTERNA = 12;
     public static Date date = new Date();
@@ -42,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayAdapter<String> adapterListaEventos;
     private ArrayList<String> listaEventosString;
     private List<Evento> listaEventosObj;
+    private EditText textoLocal;
+    private TextView dataSalvar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,39 +52,71 @@ public class MainActivity extends AppCompatActivity {
         Intent entrandaIntent = getIntent();
         final String data = entrandaIntent.getStringExtra("date");
 
-        final TextView textoData = findViewById(R.id.dataEvento);
+        dataSalvar = findViewById(R.id.dataEvento);
         sp_hora_inicial = (Spinner) findViewById(R.id.horaInicial);
         sp_hora_final = (Spinner) findViewById(R.id.horaFinal);
-        txt_descricao = (EditText) findViewById(R.id.descEvento);
-        btnSalvar = (Button) findViewById(R.id.botaoSalvar);
-        textoData.setText(data);
+        txtDescricao = (EditText) findViewById(R.id.descEvento);
+        //btnSalvar = (Button) findViewById(R.id.botaoSalvar);
+        textoLocal = (EditText) findViewById(R.id.adpterLocal);
+        dataSalvar.setText(data);
+    }
 
-        btnSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-           String emailUsuario = ConfiguracaoFirebase.getAuth().getCurrentUser().getEmail();
+    public void validarDadosEventos(View view) throws ParseException {
+
+        String local = textoLocal.getText().toString();
+        String descricao = txtDescricao.getText().toString();
+        String hrInicial = sp_hora_inicial.getSelectedItem().toString();
+        String hrFinal = sp_hora_final.getSelectedItem().toString();
+        String validarData = dataSalvar.getText().toString();
+
+        SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+        Date data = sdf1.parse(validarData);
+
+        final Date date = new Date();
+
+        if (!descricao.isEmpty()) {
+                if (!local.isEmpty()) {
+                    String emailUsuario = ConfiguracaoFirebase.getAuth().getCurrentUser().getEmail();
                     Evento evento = new Evento();
+                    evento.setId(UUID.randomUUID().toString());
+                    evento.setLocal(textoLocal.getText().toString());
                     evento.setUsuario(emailUsuario);
-                    evento.setDataSalva(textoData.getText().toString());
+                    evento.setDataSalva(dataSalvar.getText().toString());
                     evento.setHoraInicio(sp_hora_inicial.getSelectedItem().toString());
                     evento.setHoraFim(sp_hora_final.getSelectedItem().toString());
-                    evento.setDecricao(txt_descricao.getText().toString());
+                    evento.setDecricao(txtDescricao.getText().toString());
+                    cadastrarEvento(evento);
+                } else {
+                    Toast.makeText(MainActivity.this,
+                            "Informe um local!",
+                            Toast.LENGTH_SHORT).show();
+                }
 
-                    ConfiguracaoFirebase.getDatabase().child("calendario_eventos")
-                            .push()
-                            .setValue(evento);
-
+            } else {
+                Toast.makeText(MainActivity.this,
+                        "Digite a Descrição para o Evento!",
+                        Toast.LENGTH_SHORT).show();
             }
-        });
-
-
-
-
-
-
-
-
     }
+
+    public void cadastrarEvento(Evento evento){
+        ConfiguracaoFirebase.getDatabase().child("calendario_eventos")
+                .push()
+                .setValue(evento);
+        mensagemSucessoEvento();
+    }
+
+
+
+    public void mensagemSucessoEvento(){
+        Toast.makeText(MainActivity.this,
+                "Evento Cadastrado com Sucesso!",
+                Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+
+
 
     public void teste(View view){
 
