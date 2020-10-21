@@ -20,9 +20,11 @@ import android.widget.Toast;
 
 import com.curso.app.appsantamededeus.R;
 import com.curso.app.appsantamededeus.activity.DetalheEventoctivity;
+import com.curso.app.appsantamededeus.activity.MainActivity;
 import com.curso.app.appsantamededeus.adapter.EventosAdapter;
 import com.curso.app.appsantamededeus.adapter.RecyclerItemClickListener;
 import com.curso.app.appsantamededeus.config.ConfiguracaoFirebase;
+import com.curso.app.appsantamededeus.model.Base64Custon;
 import com.curso.app.appsantamededeus.model.Evento;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -101,20 +103,14 @@ public class AgendaFragment extends Fragment {
                                     public void onClick(DialogInterface dialog, int which) {
                                         Log.i(TAG, "Meus dados: " + eventoSelecionado.getDecricao());
                                         String usuario = ConfiguracaoFirebase.getIdUsuario();
-                                      DatabaseReference reference = ConfiguracaoFirebase.getDatabase()
+                                        Evento evento = new Evento();
+                                        evento.setId(eventoSelecionado.getId());
+                                      ConfiguracaoFirebase.getDatabase()
                                               .child("calendario_eventos")
-                                              .child(eventoSelecionado.getId().toString())
-                                              .child(eventoSelecionado.getUsuario().toString())
-                                              .child(eventoSelecionado.getLocal().toString())
-                                              .child(eventoSelecionado.getHoraInicio().toString())
-                                              .child(eventoSelecionado.getHoraFim().toString())
-                                              .child(eventoSelecionado.getDecricao().toString())
-                                              .child(eventoSelecionado.getDataSalva().toString());
+                                              .child(evento.getId()).removeValue();
 
-                                                reference.removeValue();
+                                      mensagemSucessoEvento();
 
-
-                                        Log.i(TAG, "Final de dados: " + eventoSelecionado.getId());
                                     }
                                 });
                                 dialog.setNegativeButton("Não", new DialogInterface.OnClickListener() {
@@ -139,6 +135,13 @@ public class AgendaFragment extends Fragment {
         );
 
         return view;
+    }
+
+    public void mensagemSucessoEvento(){
+        Toast.makeText(getActivity(),
+                "Evento excluído com Sucesso!",
+                Toast.LENGTH_SHORT).show();
+        getActivity().finish();
     }
 
 

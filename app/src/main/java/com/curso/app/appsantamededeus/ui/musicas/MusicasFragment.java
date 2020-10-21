@@ -35,7 +35,7 @@ public class MusicasFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_musicas, container, false);
 
-        final TextView viewById = view.findViewById(R.id.nomeMusica);
+        final TextInputEditText viewById = view.findViewById(R.id.nomeMusica);
         Button botaoPesquisar = view.findViewById(R.id.botaoMusica);
 
         final WebView web = (WebView) view.findViewById(R.id.webViewMusica);

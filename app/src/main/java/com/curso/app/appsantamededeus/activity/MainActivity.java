@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.curso.app.appsantamededeus.R;
 import com.curso.app.appsantamededeus.config.ConfiguracaoFirebase;
+import com.curso.app.appsantamededeus.model.Base64Custon;
 import com.curso.app.appsantamededeus.model.Evento;
 
 import java.text.ParseException;
@@ -80,10 +81,10 @@ public class MainActivity extends AppCompatActivity {
                     Evento evento = new Evento();
                     evento.setId(UUID.randomUUID().toString());
                     evento.setLocal(textoLocal.getText().toString());
-                    evento.setUsuario(emailUsuario);
-                    evento.setDataSalva(dataSalvar.getText().toString());
-                    evento.setHoraInicio(sp_hora_inicial.getSelectedItem().toString());
-                    evento.setHoraFim(sp_hora_final.getSelectedItem().toString());
+                    evento.setUsuario(Base64Custon.encodeBase64(emailUsuario));
+                    evento.setDataSalva(Base64Custon.encodeBase64(dataSalvar.getText().toString()));
+                    evento.setHoraInicio(Base64Custon.encodeBase64(sp_hora_inicial.getSelectedItem().toString()));
+                    evento.setHoraFim(Base64Custon.encodeBase64(sp_hora_final.getSelectedItem().toString()));
                     evento.setDecricao(txtDescricao.getText().toString());
                     cadastrarEvento(evento);
                 } else {
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void cadastrarEvento(Evento evento){
         ConfiguracaoFirebase.getDatabase().child("calendario_eventos")
-                .push()
+                .child(evento.getId())
                 .setValue(evento);
         mensagemSucessoEvento();
     }

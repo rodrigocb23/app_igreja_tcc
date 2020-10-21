@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Toast;
 
 import com.curso.app.appsantamededeus.R;
 import com.curso.app.appsantamededeus.config.ConfiguracaoFirebase;
+import com.curso.app.appsantamededeus.model.Base64Custon;
 import com.curso.app.appsantamededeus.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -37,7 +39,7 @@ public class CadastroActivity extends AppCompatActivity {
         campoSenha = findViewById(R.id.editLoginSenha);
     }
 
-    public void cadastrarUsuario(Usuario usuario){
+    public void cadastrarUsuario(final Usuario usuario){
         auth = ConfiguracaoFirebase.getAuth();
         auth.createUserWithEmailAndPassword(
                 usuario.getEmail(), usuario.getSenha()
@@ -45,10 +47,20 @@ public class CadastroActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+
                     Toast.makeText(CadastroActivity.this,
                             "Sucesso ao cadastrar usuário!",
                             Toast.LENGTH_SHORT).show();
                     finish();
+
+                    try {
+
+                        /*String identificador = Base64Custon.encodeBase64(usuario.getEmail());
+                        usuario.setId(identificador);
+                        usuario.salvarUsuario();*/
+                    }catch (Exception e){
+
+                    }
                 }else{
                     String excecao = "";
                     try {
@@ -69,6 +81,8 @@ public class CadastroActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     public void validarUsuario(View view){
 

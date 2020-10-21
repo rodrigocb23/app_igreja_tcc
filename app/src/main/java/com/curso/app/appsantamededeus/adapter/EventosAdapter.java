@@ -5,11 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.curso.app.appsantamededeus.R;
+import com.curso.app.appsantamededeus.model.Base64Custon;
 import com.curso.app.appsantamededeus.model.Evento;
 
 import java.text.SimpleDateFormat;
@@ -19,6 +21,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
 
     private List<Evento> eventos;
     private Context context;
+    private View view;
 
     public EventosAdapter(List<Evento> ListEventos, Context c) {
         this.eventos = ListEventos;
@@ -28,24 +31,24 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemLista = LayoutInflater.from(parent.getContext())
+        view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.adapter_eventos, parent , false);
-        return new MyViewHolder(itemLista);
+        return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Evento evento = eventos.get(position);
 
-       String data = evento.getDataSalva();
+        String data = evento.getDataSalva();
         SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
 
-        holder.data.setText("Data: " + evento.getDataSalva());
+        holder.data.setText("Data: " + Base64Custon.decodeBase64(evento.getDataSalva()));
         holder.evento.setText("Descrição: "+evento.getDecricao());
         holder.local.setText("Local:" + evento.getLocal());
-        holder.hora.setText("Hora: "+evento.getHoraInicio()+
-                "  ATÉ  " + "Hora: "+evento.getHoraFim());
-        holder.usuario.setText("Responsável: " +evento.getUsuario());
+        holder.hora.setText("Hora: "+ Base64Custon.decodeBase64(evento.getHoraInicio())+
+                "  ATÉ  " + "Hora: "+ Base64Custon.decodeBase64(evento.getHoraFim()));
+        holder.usuario.setText("Responsável: " + Base64Custon.decodeBase64(evento.getUsuario()));
         holder.id.setText(evento.getId());
 
 
